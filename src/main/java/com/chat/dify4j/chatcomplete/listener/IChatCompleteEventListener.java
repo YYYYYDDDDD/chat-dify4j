@@ -7,9 +7,9 @@ public interface IChatCompleteEventListener {
 
     /**
      * 对话结束发送对话结果事件监听
-     *          ChatCompleteEvent.fullAnswer 完整的回答内容(chat: 完整的回答内容 flow: 工作流的结果)
+     *          ChatCompleteEvent.fullAnswer 完整的回答内容(对话型应用chat: 完整的回答内容 工作流flow: 工作流的结果)
      *
-     *          ChatCompleteEvent.事件结束的任务信息
+     *          ChatCompleteEvent.fullResult 事件结束的任务信息
      *
      *          结束事件的所有信息实例:
      *                   chat:

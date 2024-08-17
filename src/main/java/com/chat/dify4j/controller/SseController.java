@@ -39,8 +39,4 @@ public class SseController {
 
         return new ResponseEntity<>(emitter, headers, HttpStatus.OK);
     }
-
-
-
-
 }

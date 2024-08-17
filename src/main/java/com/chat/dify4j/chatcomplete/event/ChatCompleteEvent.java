@@ -8,7 +8,7 @@ import org.springframework.context.ApplicationEvent;
 public class ChatCompleteEvent extends ApplicationEvent {
 
     /**
-     * 完整的回答内容(chat: 完整的回答内容 flow: 工作流的结果)
+     * 完整的回答内容(对话型应用chat: 完整的回答内容 工作流flow: 工作流的结果)
      */
     private final String fullAnswer;
 
