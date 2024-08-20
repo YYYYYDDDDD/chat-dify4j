@@ -26,6 +26,13 @@
 dify.chat-url=https://api.dify.ai/v1/chat-messages
 # Workflow应用URL
 dify.flow-url=https://api.dify.ai/v1/workflows/run
+
+# 开启代理 本地代理或正向代理
+dify.proxy-enabled=false
+# 代理地址
+dify.proxy-host=127.0.0.1
+# 代理端口
+dify.proxy-port=7890
 ```
 
 
