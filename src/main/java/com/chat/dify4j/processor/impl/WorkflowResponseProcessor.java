@@ -5,7 +5,6 @@ import com.chat.dify4j.enums.ChatUrl;
 import com.chat.dify4j.processor.ResponseProcessor;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
@@ -13,7 +12,6 @@ import java.io.IOException;
 /**
  * Dify flow工作流方式返回结果处理器
  */
-@Component("flowProcessor")
 @Slf4j
 public class WorkflowResponseProcessor extends ResponseProcessor {
 

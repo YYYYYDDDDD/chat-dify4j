@@ -7,47 +7,38 @@ import com.chat.dify4j.processor.ResponseProcessor;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import okio.BufferedSource;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Dify应用对话处理器
  */
-@Component
 @Slf4j
+@AllArgsConstructor
 public class DifyApplicationChatHandler {
 
     /**
      * ResponseProcessor实现类Map key: bean名 value: bean实例
      */
-    @Autowired
     private Map<String, ResponseProcessor> responseProcessor;
 
     /**
      * jackson ObjectMapper
      */
-    private static final ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper;
 
     /**
-     * 代理使用, 生产环境也需使用, 正向代理nginx
+     * OkHttpClient
      */
-    Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("127.0.0.1", 7890));
+    private final OkHttpClient client;
 
-    private final OkHttpClient client = new OkHttpClient.Builder()
-            .readTimeout(0, TimeUnit.MILLISECONDS)
-            .proxy(proxy)
-            .build();
 
     /**
      * 对话流失处理

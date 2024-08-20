@@ -19,4 +19,19 @@ public class ChatUrlProperties {
      * Workflow应用URL
      */
     private String flowUrl;
+
+    /**
+     * 是否启用代理
+     */
+    private boolean proxyEnabled;
+
+    /**
+     * 代理地址
+     */
+    private String proxyHost;
+
+    /**
+     * 代理端口
+     */
+    private int proxyPort;
 }
