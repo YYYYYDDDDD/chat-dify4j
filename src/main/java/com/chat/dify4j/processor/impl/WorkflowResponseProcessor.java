@@ -22,7 +22,12 @@ public class WorkflowResponseProcessor extends ResponseProcessor {
 
     @Override
     public void processLine(String line, SseEmitter emitter) throws IOException {
-        JsonNode lineJsonResult = objectMapper.readTree(line.replaceAll("data: ", ""));
+        JsonNode lineJsonResult;
+        try {
+            lineJsonResult = super.objectMapper.readTree(line.replaceAll("data: ", ""));
+        } catch (Exception e) {
+            return;
+        }
         log.info("processLine >>> {}", lineJsonResult.toPrettyString());
         String event = lineJsonResult.path("event").asText();
         // 消息结束事件，收到此事件则代表流式返回结束

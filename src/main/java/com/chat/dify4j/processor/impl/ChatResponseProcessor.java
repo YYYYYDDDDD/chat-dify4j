@@ -22,7 +22,12 @@ public class ChatResponseProcessor extends ResponseProcessor {
 
     @Override
     public void processLine(String line, SseEmitter emitter) throws IOException {
-        JsonNode lineJsonResult = super.objectMapper.readTree(line.replaceAll("data: ", ""));
+        JsonNode lineJsonResult;
+        try {
+            lineJsonResult = super.objectMapper.readTree(line.replaceAll("data: ", ""));
+        } catch (Exception e) {
+            return;
+        }
         log.info("processLine >>> {}", lineJsonResult.toPrettyString());
         String event = lineJsonResult.path("event").asText();
         super.send(emitter,lineJsonResult.path("answer"));
