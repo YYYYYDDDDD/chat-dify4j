@@ -136,3 +136,19 @@ public class DifyApplicationResponse {
 
 }
 ```
+
+### 自定义重构或修改dify返回的结果
+有时，对话返回的结果，尤其是工作流，可能要稍作修改再返回给前端
+实现`ICustomerRebuildAnswerListener`接口
+```java
+@Component
+public class CustomerRebuildAnswerListener implements ICustomerRebuildAnswerListener{
+    @Override
+    public void rebuildAnswer(CustomerRebuildAnswerEvent event) {
+        StringBuilder stringBuilder = event.getBody().get();
+        // 清空或者自行修改
+        stringBuilder.setLength(0);
+        stringBuilder.append("this is customer rebuild answer");
+    }
+}
+```
